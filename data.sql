@@ -1,5 +1,3 @@
 /* Populate database with sample data. */
 
-INSERT INTO animals (name) VALUES ('Luna');
-INSERT INTO animals (name) VALUES ('Daisy');
-INSERT INTO animals (name) VALUES ('Charlie');
+INSERT INTO animals VALUES(1, 'Agumon', 'Feb 3, 2020',0, true, 10.23);
