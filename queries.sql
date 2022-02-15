@@ -45,3 +45,8 @@ SELECT *
 /* count number of animals */
 SELECT COUNT(*)
   FROM animals;
+
+/* count number of animals that have not attempted escape */
+SELECT COUNT(*)
+  FROM animals
+  WHERE escape_attempts = 0;
