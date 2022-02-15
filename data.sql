@@ -62,3 +62,9 @@ BEGIN TRANSACTION;
 DELETE FROM animals;
 
 ROLLBACK TRANSACTION;
+
+-- run multiple transactions on the animals table
+BEGIN TRANSACTION;
+
+DELETE FROM animals
+  WHERE date_of_birth > 'Jan 1, 2022';
