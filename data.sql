@@ -20,3 +20,19 @@ INSERT INTO
     ('Angemon', 'Jun 12, 2005', 1, true, -45.00),
     ('Boarmon', 'Jun 7, 2005', 7, true, 20.40),
     ('Blossom', 'Oct 13, 1998', 3, true, 17.00);
+
+/* Start a transaction with and update the animals 
+   table by setting the species column to unspecified.
+*/
+
+BEGIN TRANSACTION; -- start transaction
+
+UPDATE animals
+  SET species = 'unspecified';
+
+--verify the changes were made
+SELECT * 
+  FROM animals;
+
+--rollback changes made to species
+ROLLBACK TRANSACTION;
