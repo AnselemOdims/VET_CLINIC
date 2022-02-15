@@ -16,4 +16,5 @@ INSERT INTO
   VALUES
     ('Charmander', 'Feb 8, 2020', 0, false, -11),
     ('Plantmon', 'Nov 15, 2022', 2, true, -5.7),
-    ('Squirtle', 'Apr 2nd, 1993', 3, false, -12.13),
+    ('Squirtle', 'Apr 2, 1993', 3, false, -12.13),
+    ('Angemon', 'Jun 12, 2005', 1, true, -45),
