@@ -49,7 +49,7 @@ UPDATE animals
   SET species = 'pokemon'
   WHERE species IS NULL;
 
-COMMIT;
+COMMIT TRANSACTION;
 
 SELECT name, species 
   FROM animals;
@@ -68,3 +68,5 @@ BEGIN TRANSACTION;
 
 DELETE FROM animals
   WHERE date_of_birth > 'Jan 1, 2022';
+
+SAVE TRANSACTION first_deleted_transaction;
