@@ -37,8 +37,7 @@ SELECT *
 ROLLBACK TRANSACTION;
 
 /* Start a transaction and update the animals 
-   table by setting species column to digimon 
-   for all animals that have a name ending in mon.
+   table by setting species column
 */
 BEGIN TRANSACTION;
 
@@ -54,3 +53,12 @@ COMMIT;
 
 SELECT name, species 
   FROM animals;
+
+/* Start a transaction and delete 
+   all records in the animals table
+*/
+BEGIN TRANSACTION;
+
+DELETE FROM animals;
+
+ROLLBACK TRANSACTION;
