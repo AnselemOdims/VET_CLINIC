@@ -73,3 +73,6 @@ SAVE TRANSACTION first_deleted_transaction;
 
 UPDATE animals 
   SET weight_kg = weight_kg * -1;
+
+ROLLBACK TRANSACTION first_deleted_transaction;
+
