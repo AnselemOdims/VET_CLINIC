@@ -49,3 +49,8 @@ UPDATE animals
 UPDATE animals
   SET species = 'pokemon'
   WHERE species IS NULL;
+
+COMMIT;
+
+SELECT name, species 
+  FROM animals;
