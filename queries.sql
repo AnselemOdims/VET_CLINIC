@@ -50,3 +50,7 @@ SELECT COUNT(*)
 SELECT COUNT(*)
   FROM animals
   WHERE escape_attempts = 0;
+
+/* avarage weight of animals */
+SELECT AVG(weight_kg)
+  FROM animals;
