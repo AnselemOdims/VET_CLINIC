@@ -55,10 +55,14 @@ SELECT COUNT(*)
 SELECT AVG(weight_kg)
   FROM animals;
 
-/* count animals that attempted escape 
-   the most between neutered and non-neutered
+/* sum escape attempts and compare
+   between neutered and non-neutered
 */
 SELECT neutered, SUM(escape_attempts)
   FROM animals
   GROUP BY neutered;
 
+/* minimum and maximum weights of each type of animal*/
+SELECT neutered, MIN(weight_kg), MAX(weight_kg)
+  FROM animals
+  GROUP BY neutered;
