@@ -70,3 +70,6 @@ DELETE FROM animals
   WHERE date_of_birth > 'Jan 1, 2022';
 
 SAVE TRANSACTION first_deleted_transaction;
+
+UPDATE animals 
+  SET weight_kg = weight_kg * -1;
