@@ -76,3 +76,8 @@ UPDATE animals
 
 ROLLBACK TRANSACTION first_deleted_transaction;
 
+UPDATE animals 
+  SET weight_kg = weight_kg * -1
+  WHERE weight_kg < 0;
+
+COMMIT TRANSACTION;
