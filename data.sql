@@ -21,10 +21,9 @@ INSERT INTO
     ('Boarmon', 'Jun 7, 2005', 7, true, 20.40),
     ('Blossom', 'Oct 13, 1998', 3, true, 17.00);
 
-/* Start a transaction with and update the animals 
+/* Start a transaction and update the animals 
    table by setting the species column to unspecified.
 */
-
 BEGIN TRANSACTION; -- start transaction
 
 UPDATE animals
@@ -36,3 +35,14 @@ SELECT *
 
 --rollback changes made to species
 ROLLBACK TRANSACTION;
+
+/* Start a transaction and update the animals 
+   table by setting species column to digimon 
+   for all animals that have a name ending in mon.
+*/
+BEGIN TRANSACTION;
+
+UPDATE animals
+  SET species = 'digimon'
+  WHERE name LIKE '%mon';
+
