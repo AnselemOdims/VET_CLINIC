@@ -15,3 +15,4 @@ INSERT INTO
     (name, date_of_birth, escape_attempts, neutered, weight_kg)
   VALUES
     ('Charmander', 'Feb 8, 2020', 0, false, -11),
+    ('Plantmon', 'Nov 15, 2022', 2, true, -5.7),
