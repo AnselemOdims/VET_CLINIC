@@ -63,7 +63,7 @@ DELETE FROM animals;
 
 ROLLBACK TRANSACTION;
 
--- run multiple transactions on the animals table
+-- start and run multiple transactions on the animals table
 BEGIN TRANSACTION;
 
 DELETE FROM animals
