@@ -73,5 +73,5 @@ SELECT neutered, MIN(weight_kg), MAX(weight_kg)
 SELECT neutered, AVG(escape_attempts)
   FROM animals
   WHERE date_of_birth 
-    BETWEEN 'Jan 1, 1990' AND 'Jan 1, 2000'
+    BETWEEN 'Jan 1, 1990' AND 'Dec 31, 2000'
   GROUP BY neutered;
