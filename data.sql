@@ -18,3 +18,4 @@ INSERT INTO
     ('Plantmon', 'Nov 15, 2022', 2, true, -5.7),
     ('Squirtle', 'Apr 2, 1993', 3, false, -12.13),
     ('Angemon', 'Jun 12, 2005', 1, true, -45),
+    ('Boarmon', 'Jun 7, 2005', 7, true, 20.4),
