@@ -14,8 +14,9 @@ INSERT INTO
   animals
     (name, date_of_birth, escape_attempts, neutered, weight_kg)
   VALUES
-    ('Charmander', 'Feb 8, 2020', 0, false, -11),
-    ('Plantmon', 'Nov 15, 2022', 2, true, -5.7),
+    ('Charmander', 'Feb 8, 2020', 0, false, -11.00),
+    ('Plantmon', 'Nov 15, 2022', 2, true, -5.70),
     ('Squirtle', 'Apr 2, 1993', 3, false, -12.13),
-    ('Angemon', 'Jun 12, 2005', 1, true, -45),
-    ('Boarmon', 'Jun 7, 2005', 7, true, 20.4),
+    ('Angemon', 'Jun 12, 2005', 1, true, -45.00),
+    ('Boarmon', 'Jun 7, 2005', 7, true, 20.40),
+    ('Blossom', 'Oct 13, 1998', 3, true, 17.00);
