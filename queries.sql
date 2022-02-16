@@ -98,4 +98,9 @@ SELECT *
   FULL OUTER JOIN animals a
   ON o.id = a.owner_id;
 
-
+-- How many animals are there per species?
+SELECT s.name, COUNT(*)
+  FROM species s
+  LEFT JOIN animals a
+  ON s.id =  a.species_id
+  GROUP BY s.name;
