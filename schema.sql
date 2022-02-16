@@ -37,7 +37,7 @@ ALTER TABLE animals
 */
 ALTER TABLE animals
   ADD species_id INT,
-  ADD CONSTRAINT species_constraint
+  ADD CONSTRAINT fk_species
   FOREIGN KEY (species_id)
   REFERENCES species (id);
 
@@ -47,6 +47,6 @@ ALTER TABLE animals
 */
 ALTER TABLE owners
   ADD owner_id INT,
-  ADD CONSTRAINT owners_constraint
+  ADD CONSTRAINT fk_owner
   FOREIGN KEY (owner_id)
   REFERENCES owners (id);

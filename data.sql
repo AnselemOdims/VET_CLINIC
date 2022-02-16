@@ -101,3 +101,18 @@ INSERT INTO
   VALUES
     ('Pokemon'),
     ('Digimon');
+
+/* Modify your inserted animals so it includes the species_id value */
+BEGIN TRANSACTION;
+
+UPDATE animals
+  SET species_id = 
+        (SELECT id FROM species WHERE name = 'Digimon')
+  WHERE name LIKE '%mon';
+
+UPDATE animals
+  SET species_id = 
+        (SELECT id FROM species WHERE name = 'Pokemon')
+  WHERE species_id IS NULL;
+
+COMMIT TRANSACTION;
