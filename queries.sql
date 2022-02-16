@@ -75,3 +75,13 @@ SELECT neutered, AVG(escape_attempts)
   WHERE date_of_birth 
     BETWEEN 'Jan 1, 1990' AND 'Dec 31, 2000'
   GROUP BY neutered;
+
+/* write queries using join to answer the following questions */
+
+-- What animals belong to Melody Pond?
+SELECT *
+  FROM animals a
+  INNER JOIN owners o
+  ON a.owner_id = o.id
+  WHERE o.full_name = 'Melody Pond';
+
