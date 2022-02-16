@@ -91,3 +91,11 @@ SELECT *
   INNER JOIN species s
   ON a.species_id = s.id
   WHERE s.name = 'Pokemon';
+
+-- List all owners and their animals, remember to include those that don't own any animal.
+SELECT *
+  FROM owners o
+  FULL OUTER JOIN animals a
+  ON o.id = a.owner_id;
+
+
