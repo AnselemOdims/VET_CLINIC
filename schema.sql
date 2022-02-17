@@ -50,3 +50,12 @@ ALTER TABLE owners
   ADD CONSTRAINT fk_owner
   FOREIGN KEY (owner_id)
   REFERENCES owners (id);
+
+-- Create a table named vets
+CREATE TABLE vets(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(255),
+  age INT,
+  date_of_graduation DATE,
+  PRIMARY KEY (id)
+);
