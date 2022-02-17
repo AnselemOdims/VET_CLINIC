@@ -82,36 +82,36 @@ SELECT neutered, AVG(escape_attempts)
 SELECT a.name, o.full_name
   FROM animals a
   INNER JOIN owners o
-  ON a.owner_id = o.id
+    ON a.owner_id = o.id
   WHERE o.full_name = 'Melody Pond';
 
 -- List of all animals that are pokemon (their type is Pokemon)
 SELECT a.name, s.name AS type
   FROM animals a
   INNER JOIN species s
-  ON a.species_id = s.id
+    ON a.species_id = s.id
   WHERE s.name = 'Pokemon';
 
 -- List all owners and their animals, remember to include those that don't own any animal.
 SELECT o.full_name, a.name
   FROM owners o
   FULL OUTER JOIN animals a
-  ON o.id = a.owner_id;
+    ON o.id = a.owner_id;
 
 -- How many animals are there per species?
 SELECT s.name, COUNT(*)
   FROM species s
   LEFT JOIN animals a
-  ON s.id =  a.species_id
+    ON s.id =  a.species_id
   GROUP BY s.name;
 
 -- List all Digimon owned by Jennifer Orwell.
 SELECT a.name, o.full_name, s.name
   FROM animals a
   INNER JOIN owners o
-  ON a.owner_id = o.id
+    ON a.owner_id = o.id
   INNER JOIN species s
-  ON a.species_id = s.id
+    ON a.species_id = s.id
   WHERE 
   o.full_name = 'Jennifer Orwell' 
   AND s.name = 'Digimon';
@@ -120,7 +120,7 @@ SELECT a.name, o.full_name, s.name
 SELECT a.name, o.full_name, a.escape_attempts
   FROM animals a
   INNER JOIN owners o
-  ON a.owner_id = o.id
+    ON a.owner_id = o.id
   WHERE o.full_name = 'Dean Winchester' 
   AND a.escape_attempts = 0;
 
@@ -128,7 +128,7 @@ SELECT a.name, o.full_name, a.escape_attempts
 SELECT o.full_name, COUNT(*)
   FROM owners o
   LEFT JOIN animals a
-  ON o.id =  a.owner_id
+    ON o.id =  a.owner_id
   GROUP BY o.full_name
   ORDER BY COUNT DESC
   LIMIT 1;
@@ -137,9 +137,9 @@ SELECT o.full_name, COUNT(*)
 SELECT v.name AS vet_name, a.name AS animal_name, vs.date_of_visit
   FROM visits vs
   INNER JOIN animals a
-  ON a.id = vs.animal_id
+    ON a.id = vs.animal_id
   INNER JOIN vets v
-  ON v.id = vs.vets_id
+    ON v.id = vs.vets_id
   WHERE v.name = 'William Tatcher'
   ORDER BY vs.date_of_visit DESC
   LIMIT 1;
@@ -148,7 +148,7 @@ SELECT v.name AS vet_name, a.name AS animal_name, vs.date_of_visit
 SELECT v.name as vet_name, COUNT(date_of_visit) 
   FROM visits vs
   LEFT JOIN vets v
-  ON vs.vets_id = v.id
+    ON vs.vets_id = v.id
   WHERE name = 'Stephanie Mendez'
   GROUP BY v.name;
 
@@ -160,8 +160,10 @@ SELECT
   v.name AS vet_name, 
   s.name AS species_name  
   FROM specializations sp
-  FULL OUTER JOIN species s ON s.id = sp.species_id
-  FULL OUTER JOIN vets v ON v.id = sp.vets_id
+  FULL OUTER JOIN species s 
+    ON s.id = sp.species_id
+  FULL OUTER JOIN vets v 
+    ON v.id = sp.vets_id
 ;
 
 -- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
@@ -170,8 +172,10 @@ SELECT
   v.name AS vet_name, 
   vs.date_of_visit
   FROM visits vs
-  LEFT JOIN animals a ON a.id = vs.animal_id
-  LEFT JOIN vets v ON v.id = vs.vets_id
+  LEFT JOIN animals a 
+    ON a.id = vs.animal_id
+  LEFT JOIN vets v 
+    ON v.id = vs.vets_id
   WHERE 
     v.name = 'Stephanie Mendez' AND 
     vs.date_of_visit 
@@ -181,7 +185,7 @@ SELECT
 SELECT a.name, COUNT(*) 
   FROM visits vs
   INNER JOIN animals a
-  ON a.id = vs.animal_id
+    ON a.id = vs.animal_id
   GROUP BY a.name
   ORDER BY COUNT DESC
   LIMIT 1
@@ -194,9 +198,9 @@ SELECT
   vs.date_of_visit
   FROM visits vs
   LEFT JOIN animals a
-  ON a.id = vs.animal_id
+    ON a.id = vs.animal_id
   LEFT JOIN vets v
-  ON v.id = vs.vets_id
+    ON v.id = vs.vets_id
   WHERE v.name = 'Maisy Smith'
   ORDER BY vs.date_of_visit ASC
   LIMIT 1
@@ -217,3 +221,15 @@ SELECT
   INNER JOIN vets v
   ON v.id = vs.vets_id
   ;
+
+-- How many visits were with a vet that did not specialize in that animal's species?
+SELECT 
+  v.name AS vet_name,
+  COUNT(*)
+  FROM visits vs
+  LEFT JOIN vets v 
+    ON v.id = vs.vets_id
+  LEFT JOIN specializations sp 
+    ON sp.vets_id = vs.vets_id
+  WHERE sp.id IS NULL
+  GROUP BY v.name;
