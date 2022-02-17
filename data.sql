@@ -146,3 +146,13 @@ UPDATE animals
   WHERE name IN ('Angemon', 'Boarmon');
 
 COMMIT TRANSACTION;
+
+-- Populate the vets tale with data
+INSERT INTO
+  vets
+    (name, age, date_of_graduation)
+  VALUES
+    ('William Tatcher', 45, 'Apr 23, 2000'),
+    ('Maisy Smith', 26, 'Jan 17, 2019'),
+    ('Stephanie Mendez', 64, 'May 4, 1981'),
+    ('Jack Harkness', 38, 'Jun 8, 2008');
