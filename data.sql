@@ -107,12 +107,20 @@ BEGIN TRANSACTION;
 
 UPDATE animals
   SET species_id = 
-        (SELECT id FROM species WHERE name = 'Digimon')
+        (
+          SELECT id 
+          FROM species 
+          WHERE name = 'Digimon'
+        )
   WHERE name LIKE '%mon';
 
 UPDATE animals
   SET species_id = 
-        (SELECT id FROM species WHERE name = 'Pokemon')
+        (
+          SELECT id 
+          FROM species 
+          WHERE name = 'Pokemon'
+        )
   WHERE species_id IS NULL;
 
 COMMIT TRANSACTION;
@@ -122,32 +130,52 @@ BEGIN TRANSACTION;
 
 UPDATE animals
   SET owner_id = 
-        (SELECT id FROM owners WHERE full_name = 'Sam Smith')
+        (
+          SELECT id 
+          FROM owners 
+          WHERE full_name = 'Sam Smith'
+        )
   WHERE name = 'Agumon';
 
 UPDATE animals
   SET owner_id = 
-        (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')
+        (
+          SELECT id 
+          FROM owners 
+          WHERE full_name = 'Jennifer Orwell'
+        )
   WHERE name IN ('Gabumon', 'Pikachu');
 
 UPDATE animals
   SET owner_id = 
-        (SELECT id FROM owners WHERE full_name = 'Bob')
+        (
+          SELECT id 
+          FROM owners 
+          WHERE full_name = 'Bob'
+        )
   WHERE name IN ('Devimon','Plantmon');
 
 UPDATE animals
   SET owner_id = 
-        (SELECT id FROM owners WHERE full_name = 'Melody Pond')
+        (
+          SELECT id 
+          FROM owners 
+          WHERE full_name = 'Melody Pond'
+        )
   WHERE name IN ('Charmander', 'Squirtle','Blossom');
 
 UPDATE animals
   SET owner_id = 
-        (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
+        (
+          SELECT id 
+          FROM owners 
+          WHERE full_name = 'Dean Winchester'
+        )
   WHERE name IN ('Angemon', 'Boarmon');
 
 COMMIT TRANSACTION;
 
--- Populate the vets tale with data
+-- Populate the vets table with data
 INSERT INTO
   vets
     (name, age, date_of_graduation)
@@ -156,3 +184,58 @@ INSERT INTO
     ('Maisy Smith', 26, 'Jan 17, 2019'),
     ('Stephanie Mendez', 64, 'May 4, 1981'),
     ('Jack Harkness', 38, 'Jun 8, 2008');
+
+-- Populate the specialization table with data
+INSERT INTO 
+  specializations
+    (species_id, vets_id)
+  VALUES
+    (
+      (
+        SELECT id 
+        FROM species 
+        WHERE name = 'Pokemon'
+      ),
+      (
+        SELECT id 
+        FROM vets 
+        WHERE name = 'William Tatcher'
+      )
+    ),
+    (
+      (
+        SELECT id 
+        FROM species 
+        WHERE name = 'Pokemon'
+      ),
+      (
+        SELECT id 
+        FROM vets 
+        WHERE name = 'Stephanie Mendez'
+      )
+    ),
+    (
+      (
+        SELECT id 
+        FROM species 
+        WHERE name = 'Digimon'
+      ),
+      (
+        SELECT id 
+        FROM vets 
+        WHERE name = 'Stephanie Mendez'
+      )
+    ),
+    (
+      (
+        SELECT id 
+        FROM species 
+        WHERE name = 'Digimon'
+      ),
+      (
+        SELECT id 
+        FROM vets 
+        WHERE name = 'Jack Harkness'
+      )
+    );
+
