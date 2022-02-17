@@ -186,3 +186,18 @@ SELECT a.name, COUNT(*)
   ORDER BY COUNT DESC
   LIMIT 1
   ;
+
+-- Who was Maisy Smith's first visit?
+SELECT 
+  a.name AS animal_name, 
+  v.name AS vet_name,
+  vs.date_of_visit
+  FROM visits vs
+  LEFT JOIN animals a
+  ON a.id = vs.animal_id
+  LEFT JOIN vets v
+  ON v.id = vs.vets_id
+  WHERE v.name = 'Maisy Smith'
+  ORDER BY vs.date_of_visit ASC
+  LIMIT 1
+  ;
