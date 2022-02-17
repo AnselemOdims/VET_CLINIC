@@ -151,3 +151,15 @@ SELECT v.name as vet_name, COUNT(date_of_visit)
   ON vs.vets_id = v.id
   WHERE name = 'Stephanie Mendez'
   GROUP BY v.name;
+
+-- List all vets and their specialties, including vets with no specialties.
+SELECT 
+  sp.id AS specialty_id, 
+  sp.species_id, 
+  sp.vets_id, 
+  v.name AS vet_name, 
+  s.name AS species_name  
+  FROM specializations sp
+  FULL OUTER JOIN species s ON s.id = sp.species_id
+  FULL OUTER JOIN vets v ON v.id = sp.vets_id
+;
