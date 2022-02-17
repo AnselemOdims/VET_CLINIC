@@ -239,6 +239,7 @@ INSERT INTO
       )
     );
 
+-- Populate the visits table with data
 INSERT INTO
   visits
     (animal_id, vets_id,  date_of_visit)
