@@ -176,3 +176,13 @@ SELECT
     v.name = 'Stephanie Mendez' AND 
     vs.date_of_visit 
     BETWEEN 'Apr 1, 2020' AND 'Aug 30, 2020';
+
+-- What animal has the most visits to vets?
+SELECT a.name, COUNT(*) 
+  FROM visits vs
+  INNER JOIN animals a
+  ON a.id = vs.animal_id
+  GROUP BY a.name
+  ORDER BY COUNT DESC
+  LIMIT 1
+  ;
