@@ -50,3 +50,47 @@ ALTER TABLE owners
   ADD CONSTRAINT fk_owner
   FOREIGN KEY (owner_id)
   REFERENCES owners (id);
+
+-- Create a table named vets
+CREATE TABLE vets(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(255),
+  age INT,
+  date_of_graduation DATE,
+  PRIMARY KEY (id)
+);
+
+/*
+  Create a "join table" called specializations to handle 
+  the relationship between species and vets
+*/
+CREATE TABLE specializations(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  species_id INT,
+  vets_id INT,
+  CONSTRAINT fk_special_species 
+  FOREIGN KEY (species_id)
+  REFERENCES species (id),
+  CONSTRAINT fk_special_vets 
+  FOREIGN KEY (vets_id)
+  REFERENCES vets (id),
+  PRIMARY KEY (id)
+);
+
+/*
+  Create a "join table" called visits to handle 
+  the relationship between animals and vets
+*/
+CREATE TABLE visits(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  animal_id INT,
+  vets_id INT,
+  date_of_visit DATE,
+  CONSTRAINT fk_visit_animal 
+  FOREIGN KEY (animal_id)
+  REFERENCES animals (id),
+  CONSTRAINT fk_visit_vets 
+  FOREIGN KEY (vets_id)
+  REFERENCES vets (id),
+  PRIMARY KEY (id)
+);
