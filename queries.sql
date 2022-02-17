@@ -201,3 +201,19 @@ SELECT
   ORDER BY vs.date_of_visit ASC
   LIMIT 1
   ;
+
+-- Details for most recent visit: animal information, vet information, and date of visit.
+SELECT 
+  a.id AS animal_id,
+  a.name AS animal_name,
+  a.date_of_birth,
+  v.id AS vet_id,
+  v.name AS vet_name, 
+  v.age AS vet_age,
+  date_of_visit
+  FROM visits vs
+  INNER JOIN animals a
+  ON a.id = vs.animal_id
+  INNER JOIN vets v
+  ON v.id = vs.vets_id
+  ;
