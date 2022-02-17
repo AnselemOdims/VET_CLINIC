@@ -79,21 +79,21 @@ SELECT neutered, AVG(escape_attempts)
 /* write queries using join to answer the following questions */
 
 -- What animals belong to Melody Pond?
-SELECT *
+SELECT a.name, o.full_name
   FROM animals a
   INNER JOIN owners o
   ON a.owner_id = o.id
   WHERE o.full_name = 'Melody Pond';
 
 -- List of all animals that are pokemon (their type is Pokemon)
-SELECT *
+SELECT a.name, s.name AS type
   FROM animals a
   INNER JOIN species s
   ON a.species_id = s.id
   WHERE s.name = 'Pokemon';
 
 -- List all owners and their animals, remember to include those that don't own any animal.
-SELECT *
+SELECT o.full_name, a.name
   FROM owners o
   FULL OUTER JOIN animals a
   ON o.id = a.owner_id;
@@ -106,21 +106,23 @@ SELECT s.name, COUNT(*)
   GROUP BY s.name;
 
 -- List all Digimon owned by Jennifer Orwell.
-SELECT *
+SELECT a.name, o.full_name, s.name
   FROM animals a
   INNER JOIN owners o
   ON a.owner_id = o.id
-  WHERE o.full_name = 'Jennifer Orwell' 
-  AND a.species_id = 
-    (SELECT id from species WHERE name = 'Digimon');
+  INNER JOIN species s
+  ON a.species_id = s.id
+  WHERE 
+  o.full_name = 'Jennifer Orwell' 
+  AND s.name = 'Digimon';
 
 -- List all animals owned by Dean Winchester that haven't tried to escape.
-SELECT *
+SELECT a.name, o.full_name, a.escape_attempts
   FROM animals a
   INNER JOIN owners o
   ON a.owner_id = o.id
   WHERE o.full_name = 'Dean Winchester' 
-  AND a.escape_attempts <= 0;
+  AND a.escape_attempts = 0;
 
 -- Who owns the most animals?
 SELECT o.full_name, COUNT(*)
