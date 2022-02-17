@@ -163,3 +163,16 @@ SELECT
   FULL OUTER JOIN species s ON s.id = sp.species_id
   FULL OUTER JOIN vets v ON v.id = sp.vets_id
 ;
+
+-- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+SELECT 
+  a.name, 
+  v.name AS vet_name, 
+  vs.date_of_visit
+  FROM visits vs
+  LEFT JOIN animals a ON a.id = vs.animal_id
+  LEFT JOIN vets v ON v.id = vs.vets_id
+  WHERE 
+    v.name = 'Stephanie Mendez' AND 
+    vs.date_of_visit 
+    BETWEEN 'Apr 1, 2020' AND 'Aug 30, 2020';
